@@ -1,0 +1,219 @@
+.drilldown {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 24px;
+  margin-top: 8px;
+}
+.drilldown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.drilldown-header h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 1.3rem;
+}
+.close-btn {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.close-btn:hover {
+  opacity: 0.9;
+}
+.drilldown-section {
+  margin-bottom: 24px;
+}
+.drilldown-section h3 {
+  font-size: 1rem;
+  color: var(--navy);
+  margin-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 6px;
+}
+.trend-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.trend-card {
+  flex: 1;
+  min-width: 120px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.trend-year {
+  font-size: 0.82rem;
+  color: #6b7280;
+  font-weight: 600;
+}
+.trend-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.trend-card-avg {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+}
+.trend-arrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.trend-arrow.improving {
+  color: #16a34a;
+}
+.trend-arrow.worsening {
+  color: #dc2626;
+}
+.signal-details {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.signal-detail-card {
+  flex: 1;
+  min-width: 200px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 14px;
+}
+.signal-detail-card h4 {
+  margin: 0 0 8px;
+  font-size: 0.88rem;
+  color: #166534;
+}
+.signal-detail-card ul {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 0.84rem;
+  color: #374151;
+}
+.signal-detail-card li {
+  margin-bottom: 4px;
+}
+.ai-poster-detail {
+  margin-bottom: 8px;
+}
+.ai-poster-detail p {
+  font-size: 0.82rem;
+  color: #374151;
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
+.no-signals {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+.contacts-table-wrap {
+  overflow-x: auto;
+}
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.contacts-table th {
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.contacts-table td {
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+.contacts-table tbody tr:hover {
+  background: #f0f4ff;
+}
+.contact-name-cell {
+  font-weight: 600;
+  color: var(--navy);
+  white-space: nowrap;
+}
+.contact-link {
+  font-size: 0.82rem;
+  color: var(--blue);
+  text-decoration: none;
+}
+.contact-link:hover {
+  text-decoration: underline;
+}
+.signal-pills {
+  display: flex;
+  gap: 6px;
+}
+.signal-pill {
+  font-size: 0.72rem;
+  background: #dcfce7;
+  color: #166534;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+  animation: pulse-green 2s ease-in-out infinite;
+}
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); }
+}
+.signal-pill-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.pill-tooltip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  color: #374151;
+  line-height: 1.4;
+  max-width: 300px;
+  width: max-content;
+  z-index: 10;
+  white-space: normal;
+}
+.signal-pill-wrapper:hover .pill-tooltip {
+  display: block;
+}
+.draft-copy-table-btn {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.draft-copy-table-btn:hover {
+  opacity: 0.9;
+}
