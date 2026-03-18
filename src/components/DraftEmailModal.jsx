@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import OpenAI from "openai";
-import "./DraftEmailModal.css";
 
 const openai = new OpenAI({
   apiKey: import.meta.env.VITE_OPENAI_API_KEY,
@@ -134,47 +133,49 @@ Relevant signals to reference:${signalContext || "\n- No specific signals select
   }
 
   return (
-    <div className="draft-modal-overlay" onClick={onClose}>
-      <div className="draft-modal" onClick={(e) => e.stopPropagation()}>
-        <button className="draft-modal-close" onClick={onClose}>&times;</button>
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[1000]" onClick={onClose}>
+      <div className="bg-white rounded-xl shadow-2xl px-8 py-7 max-w-[600px] w-[90%] relative max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+        <button className="absolute top-3.5 right-4 bg-transparent border-none text-2xl cursor-pointer text-gray-500 leading-none hover:text-gray-900" onClick={onClose}>&times;</button>
 
-        <div className="draft-email-header">
-          <div className="draft-email-field">
-            <span className="draft-email-field-label">To:</span>
-            <span className="draft-email-field-value">{contact.email || "No email available"}</span>
+        <div className="mb-4">
+          <div className="flex items-baseline py-1.5 text-sm text-gray-700 border-b border-gray-200">
+            <span className="font-semibold text-gray-500 mr-2 min-w-[60px]">To:</span>
+            <span className="text-gray-900">{contact.email || "No email available"}</span>
           </div>
-          <div className="draft-email-field">
-            <span className="draft-email-field-label">Subject:</span>
-            <span className="draft-email-field-value">{loading ? "..." : subject}</span>
+          <div className="flex items-baseline py-1.5 text-sm text-gray-700 border-b border-gray-200">
+            <span className="font-semibold text-gray-500 mr-2 min-w-[60px]">Subject:</span>
+            <span className="text-gray-900">{loading ? "..." : subject}</span>
           </div>
         </div>
 
         {loading ? (
-          <div className="draft-loading">
-            <div className="draft-spinner" />
+          <div className="flex items-center justify-center min-h-[200px] text-gray-500 text-[0.9rem]">
+            <div className="w-5 h-5 border-2 border-gray-200 border-t-slate-800 rounded-full animate-spin mr-2.5" />
             Generating personalized email...
           </div>
         ) : (
           <textarea
-            className="draft-email-body"
+            className="w-full min-h-[200px] border border-gray-200 rounded-lg p-3.5 text-sm font-sans leading-relaxed text-gray-800 resize-y mb-4 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/15"
             value={emailBody}
             onChange={(e) => setEmailBody(e.target.value)}
           />
         )}
 
-        <div className="draft-signal-checkboxes">
-          <label>
+        <div className="flex flex-col gap-2 mb-4">
+          <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
             <input
               type="checkbox"
+              className="accent-slate-800"
               checked={selectedSignals.disenrolled}
               onChange={() => handleSignalToggle("disenrolled")}
             />
             % Disenrolled due to CX
           </label>
           {hasNewHire && (
-            <label>
+            <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
               <input
                 type="checkbox"
+                className="accent-slate-800"
                 checked={selectedSignals.newHire}
                 onChange={() => handleSignalToggle("newHire")}
               />
@@ -182,9 +183,10 @@ Relevant signals to reference:${signalContext || "\n- No specific signals select
             </label>
           )}
           {hasAiPosts && (
-            <label>
+            <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
               <input
                 type="checkbox"
+                className="accent-slate-800"
                 checked={selectedSignals.aiPosts}
                 onChange={() => handleSignalToggle("aiPosts")}
               />
@@ -194,9 +196,15 @@ Relevant signals to reference:${signalContext || "\n- No specific signals select
         </div>
 
         {copied ? (
-          <button className="draft-copy-btn-copied">Email copy copied to clipboard!</button>
+          <button className="w-full py-2.5 border-none rounded-lg bg-green-600 text-white text-[0.9rem] font-semibold cursor-default">
+            Email copy copied to clipboard!
+          </button>
         ) : (
-          <button className="draft-copy-btn" onClick={handleCopy} disabled={loading}>
+          <button
+            className="w-full py-2.5 border-none rounded-lg bg-slate-800 text-white text-[0.9rem] font-semibold cursor-pointer transition-opacity hover:opacity-90 disabled:opacity-50"
+            onClick={handleCopy}
+            disabled={loading}
+          >
             Copy Email
           </button>
         )}
